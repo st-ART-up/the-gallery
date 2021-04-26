@@ -8,7 +8,28 @@ describe('stARTup-gallery routes', () => {
     return setup(pool);
   });
 
-  it('gets the ci to pass until we have real tests', () => {
-    expect(true).toBe(true);
+  let testUser;
+  beforeEach(async () => {
+    testUser = await User.create({
+      userName: 'test_user',
+      avatar: 'http://placekitten.com/200',
+    });
+  });
+
+  afterAll(() => pool.end());
+
+  const newDrawing = {
+    drawing_url: 'http://placekitten.com/500',
+    title: 'a random kitten',
+    caption: 'part of series: an exploration in random kittens',
+  };
+
+  it('posts a drawing by a user to the database', async () => {
+    const { body } = await request(app).post('/api/v1/drawings').send({});
+    expect(body).toEqual({
+      ...newDrawing,
+      id: 'some id',
+      artist: 'new_user',
+    });
   });
 });
