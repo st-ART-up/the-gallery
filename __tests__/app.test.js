@@ -58,4 +58,9 @@ describe('stARTup-gallery routes', () => {
     );
     expect(body).toEqual(testDrawing);
   });
+
+  it('gets all drawings by a user from the database', async () => {
+    const { body } = await request(app).get(`/api/v1/drawings`);
+    expect(body).toEqual([testDrawing]);
+  });
 });
