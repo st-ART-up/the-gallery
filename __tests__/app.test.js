@@ -51,4 +51,11 @@ describe('stARTup-gallery routes', () => {
       artist: 'test_user',
     });
   });
+
+  it('gets a drawing by id & user from the database', async () => {
+    const { body } = await request(app).get(
+      `/api/v1/drawings/${testDrawing.id}`
+    );
+    expect(body).toEqual(testDrawing);
+  });
 });
