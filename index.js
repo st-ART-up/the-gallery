@@ -7,7 +7,9 @@ const {
   welcomePrompt,
   studioPrompt,
   deletePrompt,
+  loginPrompt,
 } = require('./prompts');
+const auth = require('./lib/controllers/auth');
 const { getAllImages, getRandomImage, getUserDrawings } = require('./utils');
 
 const stARTupSkeleton = (newPrompt) => {
@@ -21,8 +23,7 @@ const stARTupSkeleton = (newPrompt) => {
     .then((response) => {
       const res = response.option;
       if (res === 'log me in!') {
-        // oauth link
-        stARTupSkeleton(canvasStudioGalleryPrompt);
+        logInSkeleton();
       } else if (res === 'Take me to the gallery anonymously') {
         stARTupSkeleton(anonymousGalleryPrompt);
       } else if (res === 'Exit') {
@@ -47,6 +48,17 @@ const stARTupSkeleton = (newPrompt) => {
         getRandomImage().then(stARTupSkeleton(anonymousGalleryPrompt));
       }
     });
+};
+
+const logInSkeleton = () => {
+  inquirer.prompt(loginPrompt).then((response) => {
+    if (response.githubAuth === true) {
+      const user = auth();
+    }
+    console.log(
+      'Please create a github account so you can use stARTup. Goodbye!'
+    );
+  });
 };
 
 const deleteSkeleton = () => {
