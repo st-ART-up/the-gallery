@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const { listen } = require('./lib/app');
 const { saveNewImagePrompt } = require('./prompts');
+const auth = require('./lib/controllers/auth');
 const {
   anonymousGalleryPrompt,
   canvasPrompt,
@@ -10,8 +11,12 @@ const {
   deletePrompt,
   loginPrompt,
 } = require('./prompts');
-const auth = require('./lib/controllers/auth');
-const { getAllImages, getRandomImage, getUserDrawings } = require('./utils');
+const {
+  getAllImages,
+  getRandomImage,
+  getUserDrawings,
+  logUserIn,
+} = require('./utils');
 
 const stARTupSkeleton = (newPrompt) => {
   inquirer
@@ -55,11 +60,12 @@ const stARTupSkeleton = (newPrompt) => {
 const logInSkeleton = () => {
   inquirer.prompt(loginPrompt).then((response) => {
     if (response.githubAuth === true) {
-      const user = auth();
+      auth()
+        .then((user) => logUserIn(user))
+        .then(stARTupSkeleton(canvasStudioGalleryPrompt));
+    } else {
+      console.log('Please create a github account to log in to stARTup');
     }
-    console.log(
-      'Please create a github account so you can use stARTup. Goodbye!'
-    );
   });
 };
 
