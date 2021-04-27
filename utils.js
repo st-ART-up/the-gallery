@@ -1,9 +1,5 @@
 const { default: axios } = require('axios');
 const displayImage = require('display-image');
-<<<<<<< HEAD
-=======
-const { stARTupSkeleton } = require('.');
->>>>>>> b85ee3f63e455d5dae5b12a058f087e5ad586585
 
 const { anonymousGalleryPrompt } = require('./prompts');
 
