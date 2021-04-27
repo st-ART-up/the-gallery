@@ -6,8 +6,8 @@ const Drawing = require('../lib/models/Drawing');
 const Artist = require('../lib/models/Artist');
 
 jest.mock('../lib/middleware/auth.js', () => (req, res, next) => {
-  req.user = {
-    username: 'test_artist',
+  req.artist = {
+    artist: 'test_artist',
     avatar: 'http://placekitten.com/200',
   };
   next();
