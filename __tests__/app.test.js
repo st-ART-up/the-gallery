@@ -99,4 +99,11 @@ describe('stARTup-gallery routes', () => {
       title: 'kittensinmittens',
     });
   });
+
+  it('deletes a drawing by id & artist from the database', async () => {
+    const { body } = await request(app).delete(
+      `/api/v1/drawings/${testDrawing.id}`
+    );
+    expect(body).toEqual(testDrawing);
+  });
 });
