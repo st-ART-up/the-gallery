@@ -58,6 +58,24 @@ const deletePrompt = {
   name: 'deleteIt',
 };
 
+const saveNewImagePrompt = [
+  {
+    type: 'input',
+    message: 'Enter the file url',
+    name: 'fileUrl',
+  },
+  {
+    type: 'input',
+    message: 'Enter the title of your piece',
+    name: 'title',
+  },
+  {
+    type: 'input',
+    message: 'Enter a description of your piece',
+    name: 'description',
+  },
+];
+
 module.exports = {
   welcomePrompt,
   canvasPrompt,
@@ -65,4 +83,5 @@ module.exports = {
   studioPrompt,
   anonymousGalleryPrompt,
   deletePrompt,
+  saveNewImagePrompt,
 };
