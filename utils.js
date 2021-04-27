@@ -40,13 +40,11 @@ const getUserDrawings = async () => {
 };
 
 const deleteADrawing = async () => {
-    const deletedDrawing = await axios.delete()
-}
+  const deletedDrawing = await axios.delete();
+};
 
 module.exports = {
   getAllImages,
   getRandomImage,
   getUserDrawings,
 };
-
-

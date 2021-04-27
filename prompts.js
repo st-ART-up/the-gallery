@@ -59,6 +59,7 @@ const deletePrompt = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const loginPrompt = {
   type: 'confirm',
   message: 'log in with your github account?',
@@ -67,6 +68,26 @@ const loginPrompt = {
 
 =======
 >>>>>>> b85ee3f63e455d5dae5b12a058f087e5ad586585
+=======
+const saveNewImagePrompt = [
+  {
+    type: 'input',
+    message: 'Enter the file url',
+    name: 'fileUrl',
+  },
+  {
+    type: 'input',
+    message: 'Enter the title of your piece',
+    name: 'title',
+  },
+  {
+    type: 'input',
+    message: 'Enter a description of your piece',
+    name: 'description',
+  },
+];
+
+>>>>>>> 6910c426e423d1ddcca6ee7d2d6a8bd40182cad3
 module.exports = {
   welcomePrompt,
   canvasPrompt,
@@ -75,7 +96,11 @@ module.exports = {
   anonymousGalleryPrompt,
   deletePrompt,
 <<<<<<< HEAD
+<<<<<<< HEAD
   loginPrompt,
 =======
 >>>>>>> b85ee3f63e455d5dae5b12a058f087e5ad586585
+=======
+  saveNewImagePrompt,
+>>>>>>> 6910c426e423d1ddcca6ee7d2d6a8bd40182cad3
 };

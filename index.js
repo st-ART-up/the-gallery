@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const { listen } = require('./lib/app');
+const { saveNewImagePrompt } = require('./prompts');
 const {
   anonymousGalleryPrompt,
   canvasPrompt,
@@ -45,6 +46,7 @@ const stARTupSkeleton = (newPrompt) => {
         stARTupSkeleton(anonymousGalleryPrompt);
       } else if (res === 'Create a new drawing') {
         // link to blank canvas
+        saveSkeleton();
       } else if (res === 'Continue work on existing drawing') {
         // put route
       } else if (res === 'View your drawings') {
@@ -77,6 +79,12 @@ const deleteSkeleton = () => {
   inquirer.prompt(deletePrompt).then((response) => {
     response.deleteIt;
   });
+};
+
+const saveSkeleton = () => {
+  inquirer
+    .prompt(saveNewImagePrompt)
+    .then((res) => console.log(res.fileUrl, res.title, res.description));
 };
 
 stARTupSkeleton(welcomePrompt);
