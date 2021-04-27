@@ -12,4 +12,6 @@ CREATE TABLE drawings (
     title TEXT,
     caption TEXT,
     artist TEXT NOT NULL REFERENCES users(github_username)
-)
+);
+
+INSERT INTO drawings (drawing_url, title, caption, artist) VALUES ('http://placekitten.com/500', 'test kitten drawing', 'caption of test kitten drawing', 'test_artist')
