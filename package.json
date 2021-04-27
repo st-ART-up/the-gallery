@@ -9,7 +9,8 @@
     "start": "node -r dotenv/config server.js",
     "start:watch": "nodemon -r dotenv/config server.js",
     "setup-db": "node -r dotenv/config setup-db.js",
-    "setup-heroku": "heroku run npm run setup-db"
+    "setup-heroku": "heroku run npm run setup-db",
+    "startup": "node index.js"
   },
   "jest": {
     "testEnvironment": "node"
@@ -33,6 +34,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "inquirer": "^8.0.0",
+    "open": "^8.0.6",
     "pg": "^8.6.0"
   }
 }
