@@ -86,4 +86,16 @@ describe('stARTup-gallery routes', () => {
       },
     ]);
   });
+
+  it('updates a drawing by id & user in the database', async () => {
+    const { body } = await request(app)
+      .patch(`/api/v1/drawings/${testDrawing.id}`)
+      .send({
+        caption: 'a kitten purrs and the world is anew',
+      });
+    expect(body).toEqual({
+      ...testDrawing,
+      caption: 'a kitten purrs and the world is anew',
+    });
+  });
 });
