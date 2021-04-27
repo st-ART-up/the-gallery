@@ -7,9 +7,13 @@ const {
   welcomePrompt,
   studioPrompt,
   deletePrompt,
+<<<<<<< HEAD
   loginPrompt,
 } = require('./prompts');
 const auth = require('./lib/controllers/auth');
+=======
+} = require('./prompts');
+>>>>>>> b85ee3f63e455d5dae5b12a058f087e5ad586585
 const { getAllImages, getRandomImage, getUserDrawings } = require('./utils');
 
 const stARTupSkeleton = (newPrompt) => {
@@ -23,7 +27,12 @@ const stARTupSkeleton = (newPrompt) => {
     .then((response) => {
       const res = response.option;
       if (res === 'log me in!') {
+<<<<<<< HEAD
         logInSkeleton();
+=======
+        // oauth link
+        stARTupSkeleton(canvasStudioGalleryPrompt);
+>>>>>>> b85ee3f63e455d5dae5b12a058f087e5ad586585
       } else if (res === 'Take me to the gallery anonymously') {
         stARTupSkeleton(anonymousGalleryPrompt);
       } else if (res === 'Exit') {
@@ -50,6 +59,7 @@ const stARTupSkeleton = (newPrompt) => {
     });
 };
 
+<<<<<<< HEAD
 const logInSkeleton = () => {
   inquirer.prompt(loginPrompt).then((response) => {
     if (response.githubAuth === true) {
@@ -61,6 +71,8 @@ const logInSkeleton = () => {
   });
 };
 
+=======
+>>>>>>> b85ee3f63e455d5dae5b12a058f087e5ad586585
 const deleteSkeleton = () => {
   inquirer.prompt(deletePrompt).then((response) => {
     response.deleteIt;

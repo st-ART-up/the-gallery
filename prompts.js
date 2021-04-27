@@ -58,12 +58,15 @@ const deletePrompt = {
   name: 'deleteIt',
 };
 
+<<<<<<< HEAD
 const loginPrompt = {
   type: 'confirm',
   message: 'log in with your github account?',
   name: 'githubAuth',
 };
 
+=======
+>>>>>>> b85ee3f63e455d5dae5b12a058f087e5ad586585
 module.exports = {
   welcomePrompt,
   canvasPrompt,
@@ -71,5 +74,8 @@ module.exports = {
   studioPrompt,
   anonymousGalleryPrompt,
   deletePrompt,
+<<<<<<< HEAD
   loginPrompt,
+=======
+>>>>>>> b85ee3f63e455d5dae5b12a058f087e5ad586585
 };
