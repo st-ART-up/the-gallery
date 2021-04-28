@@ -1,6 +1,6 @@
 const { default: axios } = require('axios');
 const displayImage = require('display-image');
-const { stARTupSkeleton } = require('.');
+const Artist = require('./lib/models/Artist');
 
 const { anonymousGalleryPrompt } = require('./prompts');
 
@@ -37,13 +37,21 @@ const getUserDrawings = async () => {
 };
 
 const deleteADrawing = async () => {
-    const deletedDrawing = await axios.delete()
-}
+  const deletedDrawing = await axios.delete();
+};
+const logUserIn = async ({ artist, avatar }) => {
+  Artist.create({
+    username: artist,
+    avatar,
+  });
+  displayImage
+    .fromURL(avatar)
+    .then((image) => console.log(image, 'Press arrows keys to continue'));
+};
 
 module.exports = {
   getAllImages,
   getRandomImage,
   getUserDrawings,
+  logUserIn,
 };
-
-
