@@ -4,7 +4,8 @@
   "description": "stARTup is a canvas/studio/gallery suite for creating, managing and displaying terminal-based art pieces.",
   "main": "index.js",
   "engines": {
-    "node": "14.x",
+    "node": "14.x"
+  },
   "scripts": {
     "test": "jest --verbose --runInBand --testLocationInResults --setupFiles dotenv/config",
     "test:watch": "npm run test -- --watch",
