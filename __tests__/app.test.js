@@ -111,7 +111,6 @@ describe('stARTup-gallery routes', () => {
     const { body } = await request(app).post(`/api/v1/artists/`).send();
 
     expect(body).toEqual({
-      id: expect.any(String),
       artist: expect.any(String),
       avatar: expect.any(String),
     });
