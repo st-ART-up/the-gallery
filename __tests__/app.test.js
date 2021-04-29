@@ -21,7 +21,7 @@ describe('stARTup-gallery routes', () => {
   let testDrawing;
   beforeEach(async () => {
     await Artist.create({
-      username: 'test_artist',
+      artist: 'test_artist',
       avatar: 'http://placekitten.com/200',
     });
     testDrawing = await Drawing.create({
@@ -105,5 +105,14 @@ describe('stARTup-gallery routes', () => {
       `/api/v1/drawings/${testDrawing.id}`
     );
     expect(body).toEqual(testDrawing);
+  });
+
+  it('adds an artist to the artists table via post', async () => {
+    const { body } = await request(app).post(`/api/v1/artists/`).send();
+
+    expect(body).toEqual({
+      artist: expect.any(String),
+      avatar: expect.any(String),
+    });
   });
 });
