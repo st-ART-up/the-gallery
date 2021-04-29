@@ -58,6 +58,11 @@ describe('stARTup-gallery routes', () => {
     expect(body).toEqual(testDrawing);
   });
 
+  it('gets all drawings from the database', async () => {
+    const { body } = await request(app).get(`/api/v1/drawings`);
+    expect(body).toEqual([testDrawing]);
+  });
+
   it('gets all drawings by a artist from the database', async () => {
     const { body } = await request(app).get(`/api/v1/drawings`);
     expect(body).toEqual([testDrawing]);
@@ -115,4 +120,62 @@ describe('stARTup-gallery routes', () => {
       avatar: expect.any(String),
     });
   });
+
+  it('gets all drawings by a artist from the database', async () => {
+    const { body } = await request(app).get(`/api/v1/drawings`);
+    expect(body).toEqual([testDrawing]);
+  });
+
+  it('gets a specified number of drawings from the database', async () => {
+    const array = [1, 2, 3, 4, 5];
+    for (num of array) {
+      await Drawing.create({
+        drawingUrl: `http://placekitten.com/50${num}`,
+        title: `test kitten ${num}`,
+        caption: `test caption ${num}`,
+        artist: 'test_artist',
+      });
+    }
+    const { body } = await request(app).get(`/api/v1/drawings/qty/2`);
+    expect(body).toEqual([
+      testDrawing,
+      {
+        artist: 'test_artist',
+        caption: 'test caption 1',
+        drawingUrl: 'http://placekitten.com/501',
+        id: '2',
+        title: 'test kitten 1',
+      },
+    ]);
+  });
+
+  it('updates a drawing by id & artist in the database', async () => {
+    const { body } = await request(app)
+      .put(`/api/v1/drawings/${testDrawing.id}`)
+      .send({
+        title: 'kittensinmittens',
+        caption: 'a kitten purrs and the world is anew',
+      });
+    expect(body).toEqual({
+      ...testDrawing,
+      caption: 'a kitten purrs and the world is anew',
+      title: 'kittensinmittens',
+    });
+  });
+
+  it('deletes a drawing by id & artist from the database', async () => {
+    const { body } = await request(app).delete(
+      `/api/v1/drawings/${testDrawing.id}`
+    );
+    expect(body).toEqual(testDrawing);
+  });
+
+  // it('adds an artist to the artists table via post', async () => {
+  //   const { body } = await request(app).post(`/api/v1/artists/`).send();
+
+  //   expect(body).toEqual({
+  //     artist: expect.any(String),
+  //     avatar: expect.any(String),
+  //   });
+  // });
 });
