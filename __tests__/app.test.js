@@ -58,6 +58,11 @@ describe('stARTup-gallery routes', () => {
     expect(body).toEqual(testDrawing);
   });
 
+  it('gets all drawings from the database', async () => {
+    const { body } = await request(app).get(`/api/v1/drawings`);
+    expect(body).toEqual([testDrawing]);
+  });
+
   it('gets all drawings by a artist from the database', async () => {
     const { body } = await request(app).get(`/api/v1/drawings`);
     expect(body).toEqual([testDrawing]);
@@ -106,4 +111,13 @@ describe('stARTup-gallery routes', () => {
     );
     expect(body).toEqual(testDrawing);
   });
+
+  // it('adds an artist to the artists table via post', async () => {
+  //   const { body } = await request(app).post(`/api/v1/artists/`).send();
+
+  //   expect(body).toEqual({
+  //     artist: expect.any(String),
+  //     avatar: expect.any(String),
+  //   });
+  // });
 });
